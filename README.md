@@ -10,5 +10,8 @@ $ mvn install dockerfile:build
 $ mvn dockerfile:push (not tested)
 ```
 ### Deploy
+```
+$ kubectl create -f application.yml
+```
 
 ## Web-service (under development)
