@@ -8,7 +8,7 @@ A Spring Boot Server that exposes endpoints, returning json objects.
 ```
 $ mvn install dockerfile:build
 $ docker login -username USERNAME
-$ docker push sasoria/rest-service
+$ docker push USERNAME/rest-service
 ```
 ### Deploy
 ```
