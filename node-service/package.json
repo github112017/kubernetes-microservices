@@ -1,0 +1,20 @@
+{
+  "name": "angular_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Sergio A. Soria",
+  "main": "server.js",
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 app/"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "http-server": "^0.7.2"
+  }
+}
+
+//     "start": "http-server app/"
+// 	   "start": "http-server -a localhost -p 8000 app/"
+//     "start": "node app/js/app.js"
+    
+
