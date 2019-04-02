@@ -7,6 +7,7 @@ A Spring Boot Server that exposes endpoints, returning json objects.
 ### Build
 ```
 $ mvn install dockerfile:build
+$ docker login -username USERNAME
 $ mvn dockerfile:push (not tested)
 ```
 ### Deploy
