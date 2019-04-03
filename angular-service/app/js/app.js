@@ -8,18 +8,16 @@ app.controller("AppController", function($scope, $http) {
 
 	function successCallback(response){
     	console.log(response);
-    	$scope.player = response.data.player.name;
+    	var name = response.data.player.name;
+    	var country = response.data.player.countryName;
+    	var rank = response.data.player.rank.nr;
+    	
+    	$scope.player = name;
+    	$scope.country = country;
+    	$scope.rank = rank;
 	}
 
 	function errorCallback(error){
     	console.log(error);
 	}
-});
-
-app.controller('AppCtrl', function($scope) {
-	$scope.message = "The app routing is working!";
-});
-
-app.controller('UserCtrl', function($scope) {
- 	$scope.message = "The app routing is still working!";
 });
