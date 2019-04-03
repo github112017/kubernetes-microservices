@@ -1,0 +1,27 @@
+/* Body */
+.body {
+	margin: 0;
+}
+
+/* View container */
+.view-container {
+  margin: 0 auto;
+  height: 400px;
+  background-color: blue;
+}
+
+/* Navbar */
+.navbar-brand {
+	font-family: 'Raleway', sans-serif;
+	color: black;
+}
+
+/* Header */
+.container h1 {
+	font-family: 'Raleway', sans-serif;
+}
+
+/* Paragraph */
+.container p {
+		font-family: 'Raleway', sans-serif;
+}
