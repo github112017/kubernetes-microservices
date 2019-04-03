@@ -1,7 +1,7 @@
 # kubernetes-microservices
 Microservices running in Docker containers that interact on a Kubernetes platform.
 
-## Rest-service (under development)
+## Springboot-service (under development)
 A Spring Boot Server that exposes endpoints, returning json objects.
 
 ### Build
@@ -15,4 +15,4 @@ $ docker push USERNAME/rest-service
 $ kubectl create -f application.yml
 ```
 
-## Web-service (under development)
+## Angular-service (under development)
