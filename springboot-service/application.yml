@@ -2,10 +2,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: rest-app-service
+  name: springboot-app-service
 spec:
   selector:
-    app: rest-app
+    app: sbringboot-app
   ports:
   - protocol: "TCP"
     port: 8081
@@ -17,16 +17,16 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: rest-app-deployment
+  name: springboot-app-deployment
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        app: rest-app
+        app: springboot-app
     spec:
       containers:
-      - name: rest-app
+      - name: springboot-app
         image: sasoria/rest-service:latest
         ports:
         - containerPort: 8080
