@@ -1,9 +1,8 @@
 {
   "name": "angular_web_app",
   "version": "1.0.0",
-  "description": "Node.js on Docker",
+  "description": "AngulaJS on Docker",
   "author": "Sergio A. Soria",
-  "main": "server.js",
   "scripts": {
     "start": "http-server -a localhost -p 8000 app/"
   },
@@ -15,7 +14,6 @@
     "bootstrap": "^4.3.1",
     "express": "^4.16.1",
     "http-server": "^0.7.2",
-    "jQuery": "^1.7.4",
-    "jquery": "file:node_modules/jquery"
+    "jquery": "^3.3.1"
   }
 }

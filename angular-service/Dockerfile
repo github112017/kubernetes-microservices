@@ -1,5 +1,14 @@
-# TODO : implement the following dependencies
+FROM node:8
 
-# npm install angular
-# npm install angular-route
-# npm install angular-resource
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+EXPOSE 8000
+CMD [ "npm", "start" ]

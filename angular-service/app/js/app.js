@@ -1,12 +1,12 @@
 var app = angular.module("app", ['ngResource', 'ngRoute']);
 
 app.controller("AppController", function($scope, $http) {
-	$scope.info = "Execute http request";
+	$scope.info = "Execute http get request";
 
-	$http.get('http://api.bf4stats.com/api/playerInfo?plat=pc&name=1ApRiL&output=json')
-	.then(successCallback, errorCallback);
+	// Get from {service-name/target-port}:
+	$http.get('http://springboot-app-service:8080').then(successCallback, errorCallback);
 
-	// TODO : get a json list and display it the container.
+	// TODO : get a json list and display it the container. See ng-repeat.
 	function successCallback(response){
     	console.log(response);
     	var name = response.data.player.name;
