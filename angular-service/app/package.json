@@ -4,7 +4,7 @@
   "description": "AngulaJS on Docker",
   "author": "Sergio A. Soria",
   "scripts": {
-    "start": "http-server -a localhost -p 8000 app/"
+    "start": "http-server -a localhost -p 8000 ."
   },
   "dependencies": {
     "angular": "^1.7.8",
