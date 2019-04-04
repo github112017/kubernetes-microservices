@@ -8,7 +8,7 @@
 #CMD ["npm", "start"]
 
 
-
+# TODO : implement this with node:8
 FROM ubuntu:latest
 WORKDIR /usr/src/app
 COPY app/package*.json ./
