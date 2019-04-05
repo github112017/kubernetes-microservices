@@ -5,7 +5,7 @@ metadata:
   name: springboot-app-service
 spec:
   selector:
-    app: sbringboot-app
+    app: springboot-app
   ports:
   - protocol: "TCP"
     port: 8081
