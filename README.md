@@ -6,9 +6,8 @@ A Spring Boot Server that exposes endpoints, returning json objects.
 
 ### Build
 ```
-$ mvn install dockerfile:build
-$ docker login -username USERNAME
-$ docker push USERNAME/rest-service
+$ cd springboot-service
+$ bash deploy.sh
 ```
 ### Deploy
 ```
@@ -16,3 +15,13 @@ $ kubectl create -f application.yml
 ```
 
 ## Angular-service (under development)
+
+### Build
+```
+$ cd angular-service
+$ bash deploy.sh
+```
+### Deploy
+```
+$ kubectl create -f application.yml
+```
