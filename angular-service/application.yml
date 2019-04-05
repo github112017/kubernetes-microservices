@@ -1,0 +1,31 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: angular-app-service
+spec:
+  selector:
+    app: angular-app
+  ports:
+  - protocol: "TCP"
+    port: 8081
+    targetPort: 8000
+    nodePort: 30003
+  type: LoadBalancer
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: angular-app-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+      - name: angular-app
+        image: sasoria/angular-service:latest
+        ports:
+        - containerPort: 8000

@@ -4,7 +4,8 @@ app.controller("AppController", function($scope, $http) {
 	$scope.info = "Execute http get request";
 
 	// Get from {service-name/target-port}:
-	$http.get('http://springboot-app-service:8080').then(successCallback, errorCallback);
+	$http.get('http://springboot-app-service:8080/api/load_data?name=John')
+    .then(successCallback, errorCallback);
 
 	// TODO : get a json list and display it the container. See ng-repeat.
 	function successCallback(response){

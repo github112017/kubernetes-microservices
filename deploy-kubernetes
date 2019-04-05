@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "deploying springboot-service to kubernetes..."
+sleep2
+kubectl create -f springboot-service/application.yml
+sleep 5
+echo "deploying angular-service to kubernetes..."
+sleep 2
+kubectl create -f angular-service/application.yml
+
