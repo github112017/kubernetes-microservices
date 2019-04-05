@@ -1,0 +1,10 @@
+!#/bin/bash
+echo "[msg] building springboot-service..."
+sleep 2
+bash springboot-service/deploy.sh
+
+echo "---------------------------------"
+
+echo "[msg] building angular-service..."
+sleep 2
+bash angular-service/deploy.sh
