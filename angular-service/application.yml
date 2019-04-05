@@ -1,3 +1,4 @@
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -18,7 +19,7 @@ kind: Deployment
 metadata:
   name: angular-app-deployment
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
