@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class LoadService {
@@ -30,6 +32,16 @@ public class LoadService {
 
         return checkStatuscode(response, entity, name);
 
+    }
+
+    public Map<String, Object> getPlayer() {
+        Player player = playerlist.getPlayer("Jazy2");
+        Map<String, Object> response = new HashMap<>();
+        response.put("name", player.getName());
+        response.put("country", player.getCountry());
+        response.put("game", player.getGame());
+
+        return response;
     }
 
     public boolean clearData() throws Exception {
