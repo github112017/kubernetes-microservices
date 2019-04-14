@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd ..
+
+# Deploy springboot-service
+echo "[log] deploying springboot-service to kubernetes..."
+sleep 2
+kubectl create -f services/springboot-service/application.yml
+sleep 4
+
+# Deploy node-service
+echo "[log] deploying node-service to kubernetes..."
+sleep 2
+kubectl create -f services/node-service/application.yml

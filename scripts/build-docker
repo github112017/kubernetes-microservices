@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd .. 
+
+# Build springboot-service
+echo "[log] building springboot-service..."
+sleep 2
+cd services/springboot-service/
+bash deploy.sh
+
+cd ..
+
+# Build node-service
+echo "[log] building node-service..."
+cd services/node-service/
+sleep 2
+bash deploy.sh
