@@ -1,27 +1,15 @@
 # kubernetes-microservices
 Microservices running in Docker containers that interact on a Kubernetes platform.
 
+![Component diagram](/docs/Component-diagram.png)
+
 ## Springboot-service (under development)
-A Spring Boot Server that exposes endpoints, returning json objects.
+A Spring Boot Server that exposes endpoints, returning json objects. It calls a REST API and currently saves the data in a `List`.
 
-### Build
-```
-$ cd springboot-service
-$ bash deploy.sh
-```
-### Deploy
-```
-$ kubectl create -f application.yml
-```
+## Node-service (under development)
+An ExpressJS server that provides an AngularJS web client. It calls the api endpoints in a `springboot-service`, displaying it as a list in HTML.
 
-## Angular-service (under development)
+## Mongodb-service (under development)
+- [ ] Not implemented.
 
-### Build
-```
-$ cd angular-service
-$ bash deploy.sh
-```
-### Deploy
-```
-$ kubectl create -f application.yml
-```
+
