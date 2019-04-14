@@ -3,7 +3,7 @@ Microservices running in Docker containers that interact on a Kubernetes platfor
 
 ## Components
 ![Component diagram](/docs/Component_diagram.png)
-## Deployments
+## Deployment
 ![Component diagram](/docs/Deployment_diagram.png)
 
 ## Springboot-service (under development)
