@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -34,14 +35,20 @@ public class LoadService {
 
     }
 
-    public Map<String, Object> getPlayer() {
-        Player player = playerlist.getPlayer("Jazy2");
+    public Map<String, Object> getPlayer(String name) {
+        Player player = playerlist.getPlayer(name);
         Map<String, Object> response = new HashMap<>();
         response.put("name", player.getName());
         response.put("country", player.getCountry());
         response.put("game", player.getGame());
+        response.put("rank", player.getRank());
 
         return response;
+    }
+
+    public List<Player> getPlayers(){
+        // TODO : implement this
+        return null;
     }
 
     public boolean clearData() throws Exception {
