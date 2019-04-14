@@ -1,7 +1,10 @@
 # kubernetes-microservices
 Microservices running in Docker containers that interact on a Kubernetes platform.
 
-![Component diagram](/docs/Component-diagram.png)
+## Components
+![Component diagram](/docs/Component_diagram.png)
+## Deployment
+![Component diagram](/docs/Deployment_diagram.png)
 
 ## Springboot-service (under development)
 A Spring Boot Server that exposes endpoints, returning json objects. It calls a REST API and currently saves the data in a `List`.
