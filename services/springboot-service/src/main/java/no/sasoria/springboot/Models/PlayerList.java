@@ -53,4 +53,8 @@ public class PlayerList {
         }
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
 }

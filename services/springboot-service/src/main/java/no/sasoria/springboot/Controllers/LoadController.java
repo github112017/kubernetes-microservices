@@ -1,6 +1,7 @@
 package no.sasoria.springboot.Controllers;
 
 import no.sasoria.springboot.Models.Player;
+import no.sasoria.springboot.Models.PlayerList;
 import no.sasoria.springboot.Service.LoadService;
 import org.apache.http.client.ClientProtocolException;
 
@@ -20,22 +21,42 @@ public class LoadController {
     @Autowired
     private LoadService loadService;
 
-    @GetMapping({"/api/load_data"})
-        public String loadData(Model model, @RequestParam(value="name", required=false, defaultValue="") String name) throws
+    @GetMapping({"/api/load_player"})
+        public String loadData(Model model, @RequestParam(value="name", required=true) String name) throws
         ClientProtocolException, IOException {
             if (loadService.loadPlayer(name)) {
-                return "Data loaded";
+                return "Player loaded";
             }
             else {
                 throw new RuntimeException("Failed to load data");
             }
     }
 
+    @GetMapping({"/api/load_players"})
+    public String loadData(Model model) throws
+            ClientProtocolException, IOException {
+        if (true) {
+            // TODO : implement this.
+            return "Data loaded";
+        }
+        else {
+            throw new RuntimeException("Failed to load data");
+        }
+    }
+
     @GetMapping({"/api/get_player"})
     public Map<String, Object> getPlayer(Model model, @RequestParam(value="name", required=true) String name) throws
             ClientProtocolException, IOException {
         if (loadService.loadPlayer(name)) {
-            return loadService.getPlayer(name);
+            Map<String, Object> response = new HashMap<>();
+            Player player = loadService.getPlayer(name);
+
+            response.put("name", player.getName());
+            response.put("country", player.getCountry());
+            response.put("game", player.getGame());
+            response.put("rank", player.getRank());
+
+            return response;
         }
         else {
             throw new RuntimeException("Failed to get data");
@@ -49,6 +70,7 @@ public class LoadController {
             List<Player> players = loadService.getPlayers();
 
             Map<Integer, Object> response = new HashMap<>();
+
             for (Player player : players) {
                 response.put(player.getId(), player.toJSON());
             }

@@ -32,23 +32,15 @@ public class LoadService {
         HttpEntity entity = response.getEntity();
 
         return checkStatuscode(response, entity, name);
-
     }
 
-    public Map<String, Object> getPlayer(String name) {
+    public Player getPlayer(String name) {
         Player player = playerlist.getPlayer(name);
-        Map<String, Object> response = new HashMap<>();
-        response.put("name", player.getName());
-        response.put("country", player.getCountry());
-        response.put("game", player.getGame());
-        response.put("rank", player.getRank());
-
-        return response;
+        return player;
     }
 
     public List<Player> getPlayers(){
-        // TODO : implement this
-        return null;
+        return playerlist.getPlayers();
     }
 
     public boolean clearData() throws Exception {
@@ -71,7 +63,6 @@ public class LoadService {
         else {
             return false;
         }
-
     }
 
     private String createRequestURL(String name) {
@@ -81,6 +72,5 @@ public class LoadService {
         String output = "&output=json";
 
         return baseUrl + platform + playerName + output;
-
     }
 }
