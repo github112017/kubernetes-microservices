@@ -1,0 +1,20 @@
+{
+  "name": "express_web_server",
+  "version": "1.0.0",
+  "description": "ExpressJS serving an AngularJS browser client",
+  "author": "Sergio A. Soria",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "angular": "^1.7.8",
+    "angular-resource": "^1.7.8",
+    "angular-route": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.1",
+    "jquery": "^3.3.1",
+    "request": "^2.88.0"
+  }
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# minikube ip
+# /etc/hosts
+# ip minikube
+# └─────╼ http minikube:30003/api/load
