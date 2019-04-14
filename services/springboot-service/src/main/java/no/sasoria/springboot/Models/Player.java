@@ -3,6 +3,9 @@ package no.sasoria.springboot.Models;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class Player {
     int id, rank;
@@ -24,6 +27,17 @@ public class Player {
         this.game = jsonPlayer.get("game").toString();
         this.country = jsonPlayer.get("countryName").toString();
         this.rank = Integer.parseInt(jsonPlayer.getJSONObject("rank").get("nr").toString());
+    }
+
+    public Map<String, Object> toJSON() {
+        Map<String, Object> json = new HashMap<>();
+        json.put("name", this.getName());
+        json.put("country", this.getCountry());
+        json.put("game", this.getGame());
+        json.put("rank", this.getRank());
+        json.put("id", this.getId());
+
+        return json;
     }
 
     public void setId(int id) {
