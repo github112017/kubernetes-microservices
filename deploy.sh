@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function build_docker () {
-  read -p "[log] do you want to build and push docker images (y/n)? " -n 1 -r
+  read -p "[msg] do you want to build and push docker images (y/n)? " -n 1 -r
   echo
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -13,7 +13,7 @@ function build_docker () {
 }
 
 function deploy_kubernetes() {
-  read -p "[log] do you want to deploy pods and services to kubernetes (y/n)? " -n 1 -r
+  read -p "[msg] do you want to deploy pods and services to kubernetes (y/n)? " -n 1 -r
   echo
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -36,7 +36,7 @@ function start_minikube() {
 
 function main () {
   build_docker
-  start_minikube
+  # start_minikube
   deploy_kubernetes
 }
 
