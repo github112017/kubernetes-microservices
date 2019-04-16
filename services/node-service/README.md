@@ -14,8 +14,8 @@ The ExpressJS server exposes the following endopoints,
 Accessing the node debugger on the ExpressJS server can be done with,
 
 ```
-kubectl exec -it {depl-name} bash
-node inspect server.js
+$ kubectl exec -it {depl-name} bash
+$ node inspect server.js
 ```
 
 
