@@ -14,10 +14,12 @@ service/
 ![Component diagram](/docs/Deployment_diagram.png)
 
 ### Deploy
+This will build docker images, deploy applications and services when prompted.
 ```
 $ ./deploy.sh
 ```
-#### Redeploy
+### Redeploy
+This will delete applications and services and deploy them again. Usefull when new docker images are pushed to the registry.
 ```
 $ ./redeploy.sh
 ```
