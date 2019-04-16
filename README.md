@@ -14,7 +14,7 @@ service/
 ![Component diagram](/docs/Deployment_diagram.png)
 
 ### Deploy
-This will build docker images, deploy applications and services when prompted.
+This will build docker images, and deploy applications and services when prompted.
 ```
 $ ./deploy.sh
 ```
