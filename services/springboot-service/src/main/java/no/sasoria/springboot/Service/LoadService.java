@@ -55,9 +55,7 @@ public class LoadService {
             JSONObject jsonPlayer = jsonObject.getJSONObject("player");
 
             playerlist.addPlayer(new Player(jsonPlayer));
-            boolean hasJazy2 = playerlist.hasPlayer("Jazy2");
 
-            System.out.println("hasJazy2 : " + hasJazy2);
             return true;
         }
         else {
