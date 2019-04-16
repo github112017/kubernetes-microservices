@@ -7,6 +7,8 @@ service/
   docs/
   Dockerfile
   application.yml
+  README.md
+  deploy.sh
 ```
 
 ## Components
