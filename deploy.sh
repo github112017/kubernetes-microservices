@@ -42,11 +42,6 @@ function main () {
 
 main
 
-# └─────╼ kubectl get service -o wide
-# └─────╼ kubectl delete svc node-app-service
-
-# └─────╼ kubectl delete -f application.yml
-
 # this workds with sudo
 # echo '1.2.3.4 test' | sudo tee -a /etc/hosts
 
