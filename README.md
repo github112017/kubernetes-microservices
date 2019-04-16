@@ -4,6 +4,7 @@ Microservices running in docker containers that interact on a Kubernetes platfor
 ```
 service/
   src/
+  docs/
   Dockerfile
   application.yml
 ```
