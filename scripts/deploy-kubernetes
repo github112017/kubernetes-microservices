@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ..
-
 # Deploy springboot-service
 echo "[log] deploying springboot-service to kubernetes..."
 sleep 2
