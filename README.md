@@ -22,7 +22,7 @@ This will build docker images, and deploy applications and services when prompte
 $ ./deploy.sh
 ```
 ### Redeploy
-This will delete applications and services and deploy them again. Usefull when new docker images are pushed to the registry.
+This will delete applications, services and deploy them again. Usefull when new docker images are pushed to the registry.
 ```
 $ ./redeploy.sh
 ```
