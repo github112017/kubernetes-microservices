@@ -7,6 +7,6 @@ The ExpressJS server exposes the following endopoints,
 /api/get_player/:name
 /api/get_players
 ```
-
+### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
 
