@@ -6,7 +6,9 @@ import no.sasoria.springboot.Service.LoadService;
 import org.apache.http.client.ClientProtocolException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +24,8 @@ public class LoadController {
     private LoadService loadService;
 
     @GetMapping({"/api/load_player"})
-        public String loadData(Model model, @RequestParam(value="name", required=true) String name) throws
+    @ResponseStatus(HttpStatus.OK)
+    public String loadData(Model model, @RequestParam(value="name", required=true) String name) throws
         ClientProtocolException, IOException {
             if (loadService.loadPlayer(name)) {
                 return "Player loaded";
@@ -45,6 +48,7 @@ public class LoadController {
     }
 
     @GetMapping({"/api/get_player"})
+    @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getPlayer(Model model, @RequestParam(value="name", required=true) String name) throws
             ClientProtocolException, IOException {
         if (loadService.loadPlayer(name)) {
