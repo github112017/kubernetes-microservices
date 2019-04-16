@@ -40,7 +40,7 @@ public class LoadController {
             return "Data loaded";
         }
         else {
-            throw new RuntimeException("Failed to load data");
+            throw new IllegalArgumentException("Failed to load data");
         }
     }
 
