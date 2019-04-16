@@ -2,13 +2,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: node-app-service
+  name: node-service
 spec:
   selector:
     app: node-app
   ports:
   - protocol: "TCP"
-    port: 8081
+    port: 8000
     targetPort: 8000
     nodePort: 30003
   type: LoadBalancer
@@ -17,7 +17,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: node-app-deployment
+  name: node-deployment
 spec:
   replicas: 1
   template:
