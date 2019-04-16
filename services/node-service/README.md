@@ -7,3 +7,6 @@ The ExpressJS server exposes the following endopoints,
 /api/get_player/:name
 /api/get_players
 ```
+
+![Component diagram](/docs/Activity_diagram.png)
+
