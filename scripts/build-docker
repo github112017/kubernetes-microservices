@@ -1,17 +1,15 @@
 #!/bin/bash
 
-cd .. 
+ROOT_DIR=$(pwd)
 
 # Build springboot-service
 echo "[log] building springboot-service..."
 sleep 2
-cd services/springboot-service/
+cd $ROOT_DIR/services/springboot-service/
 bash deploy.sh
-
-cd ..
 
 # Build node-service
 echo "[log] building node-service..."
-cd services/node-service/
+cd $ROOT_DIR/services/node-service/
 sleep 2
 bash deploy.sh
