@@ -17,6 +17,6 @@ cd $SPRINGBOOT_DIR
 echo "[log] deleting springboot-service..."
 kubectl delete -f application.yml
 
-echo "[log] deleting springboot-service..."
+echo "[log] creating springboot-service..."
 sleep 4
 kubectl create -f application.yml
