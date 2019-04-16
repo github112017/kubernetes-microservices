@@ -68,7 +68,7 @@ app.get('/api/get_player/:name', (req, res) => {
 
 /* Get player list, returns json - list of players */
 app.get('/api/get_players', (req, res) => {
-	var url = 'springboot-app-service:8081/api/get/players'
+	var url = 'springboot-app-service:8081/api/get_players'
 
 	request(url, function (error, response, body) {
 		if (response.statusCode === 200) {
