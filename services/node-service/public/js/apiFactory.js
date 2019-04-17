@@ -10,7 +10,7 @@ app.factory("apiService", function($http, $q) {
         method: 'GET',
         url: base_url + api_load + name,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'text/plain'
         }
       })
     },
