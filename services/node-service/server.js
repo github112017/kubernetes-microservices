@@ -3,15 +3,14 @@
 const express = require('express')
 const request = require('request');
 const path = require("path")
-
 const PORT = 8000
 const HOST = '0.0.0.0'
 
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.use("/css", express.static(__dirname + '/public/css'))
-app.use("/js", express.static(__dirname + '/public/js'))
+app.use(express.static(path.join(__dirname, 'src')))
+app.use("/css", express.static(__dirname + '/src/css'))
+app.use("/js", express.static(__dirname + '/src/js'))
 app.use("/node_modules", express.static(__dirname + '/node_modules'))
 
 /* Enable CORS */
@@ -22,12 +21,6 @@ app.use(function(req, res, next) {
 
   next();
 })
-
-/* Send static html file, adds dependencies (?) 
-app.get('/api/ui', function (req, res) {
-	res.sendFile(__dirname + '/public/index.html')
-})
-*/
 
 /* Load player, /api/load_player/{name} */
 app.get('/api/load_player/:name', (req, res) => {
