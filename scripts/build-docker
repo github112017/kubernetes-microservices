@@ -2,14 +2,38 @@
 
 ROOT_DIR=$(pwd)
 
-# Build springboot-service
-echo "[log] building springboot-service..."
-sleep 2
-cd $ROOT_DIR/services/springboot-service/
-bash deploy.sh
+function build_node () {
+  read -p "[msg] do you want to build node-service (y/n)? " -n 1 -r
+  echo
 
-# Build node-service
-echo "[log] building node-service..."
-cd $ROOT_DIR/services/node-service/
-sleep 2
-bash deploy.sh
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[builder] building node-service..."
+    cd $ROOT_DIR/services/node-service/
+    sleep 2
+    bash deploy.sh
+    echo "[builder] sasoria/node-service:latest has been deployed"
+  fi
+}
+
+function build_springboot () {
+  read -p "[msg] do you want to build springboot-service (y/n)? " -n 1 -r
+  echo
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[builder] building springboot-service ..."
+    sleep 2
+    cd $ROOT_DIR/services/springboot-service/
+    bash deploy.sh
+    echo "[builder] sasoria/springboot-service:latest has been deployed"
+  fi
+}
+
+function main () {
+  build_node
+  build_springboot
+}
+
+main
+
+
+
