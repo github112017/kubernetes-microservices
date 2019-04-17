@@ -10,3 +10,6 @@ A Spring Boot Server that exposes the following endpoints,
 ```
 
 It calls a REST API that return player statistics and currently saves the data in a `List`.
+
+### Request layout
+![Activity diagram](docs/Activity_diagram.png)
