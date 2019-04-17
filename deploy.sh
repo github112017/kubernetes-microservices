@@ -7,7 +7,6 @@ function build_docker () {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "[log] deploying docker images ..."
     ./scripts/build-docker
-    sleep 2
     echo "[log] docker images have been deployed"
   fi
 }
@@ -19,7 +18,6 @@ function deploy_kubernetes() {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "[log] deploying pods and services ..."
     ./scripts/deploy-kubernetes
-    sleep 2
     echo "[log] kubernetes pods and services have been deployed"
   fi
 }
