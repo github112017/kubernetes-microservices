@@ -13,3 +13,11 @@ It calls a REST API that return player statistics and currently saves the data i
 
 ### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
+
+### Log
+
+### Docker
+Building and deploying a docker image is done with,
+```
+$ ./deploy.sh
+```
