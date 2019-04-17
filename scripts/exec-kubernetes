@@ -1,0 +1,31 @@
+#!/bin/bash
+
+NODE_DEPLOYMENT=$(kubectl get pods | grep "node-deployment-[a-zA-Z0-9_]*-[a-zA-Z0-9_]*" -o)
+SPRINGBOOT_DEPLOYMENT=$(kubectl get pods | grep "springboot-deployment-[a-zA-Z0-9_]*-[a-zA-Z0-9_]*" -o)
+
+function exec_node () {
+  read -p "[msg] do you want to exec into the node server? (y/n)? " -n 1 -r
+  echo
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[log] connecting to deployment ..."
+    kubectl exec -it $NODE_DEPLOYMENT bash
+  fi
+}
+
+function exec_springboot () {
+  read -p "[msg] do you want to exec into the springboot server? (y/n)? " -n 1 -r
+  echo
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[log] connecting to deployment ..."
+    kubectl exec -it $SPRINGBOOT_DEPLOYMENT bash
+  fi
+}
+
+function main () {
+  exec_node
+  exec_springboot
+}
+
+main
