@@ -63,7 +63,7 @@ public class LoadController {
             return response;
         }
         else {
-            throw new RuntimeException("Failed to get data");
+            throw new IllegalArgumentException("Failed to get data");
         }
     }
 
