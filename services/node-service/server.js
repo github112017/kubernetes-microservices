@@ -32,43 +32,62 @@ app.get('/api/ui', function (req, res) {
 /* Load player, /api/load_player/{name} */
 app.get('/api/load_player/:name', (req, res) => {
 	var name = req.params.name
-	var url = 'springboot-app-service:8081/api/load_player?name=' + name
+	var url = 'http://springboot-app-service:8081/api/load_player?name=' + name
   
-  console.log(":: BEFORE ::")
-	request(url, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log(":: INSIDE ::")
-      res.json(response)
+  var load_req = {
+    host: url,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'text/plain'
     }
-		else {
-      console.log(":: ERROR ::")
-			console.log(error)
-		}
-	})
-})
+  }
+  console.error("Before loading")
 
+  request(url, load_req, load_callback) 
+
+  console.error("After loading")
+
+  function load_callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send("Player loaded")
+    }
+    else {
+      res.send(error)
+      console.log(error)
+      console.error(error)
+    }
+  }
+})
 
 /* Get player, /api/player/{name} */
 app.get('/api/get_player/:name', (req, res) => {
   var name = req.params.name
-  var url = 'springboot-app-service:8081/api/get_player?name=' + name
+  var url = 'http://springboot-app-service:8081/api/get_player?name=' + name
   
-  console.log(":: BEFORE ::")
-  request(url, function (error, response, body) {
+   var get_req = {
+    host: url,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  request(url, get_req, get_callback)
+
+  function get_callback (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(response)
-      console.log(":: INSIDE ::")
-    } 
+    }
     else {
-      console.log(":: ERROR ::")
+      res.send(error)
+      console.error(error)
       console.log(error)
     }
-  })
+  }
 })
 
 /* Get player list, returns json - list of players */
 app.get('/api/get_players', (req, res) => {
-	var url = 'springboot-app-service:8081/api/get_players'
+	var url = 'http://springboot-app-service:8081/api/get_players'
 
 	request(url, function (error, response, body) {
 		if (response.statusCode === 200) {
