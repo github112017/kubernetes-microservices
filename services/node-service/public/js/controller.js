@@ -3,14 +3,14 @@ app.controller("AppController", function($scope, $http, apiService) {
 
   apiService.load_player(player)
   .then(function(response) {
-    console.log(response)
+    console.log("LOAD_SUCEESS : " + response)
   })
 
   apiService.get_player(player)
   .then(successCallback, errorCallback)
     
   function successCallback(response) {
-    console.log(response)
+    console.log("SUCCESS : " + response)
 
     $scope.player = response.name
     $scope.game = response.game
@@ -19,6 +19,6 @@ app.controller("AppController", function($scope, $http, apiService) {
   }
   
   function errorCallback(error){
-    console.log(error)
+    console.log("ERROR : " + error)
   }
 });
