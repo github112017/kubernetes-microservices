@@ -10,12 +10,28 @@ The ExpressJS server exposes the following endopoints,
 ### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
 
-### Debugger
+### Debug
 Accessing the node debugger on the ExpressJS server can be done with,
-
 ```
 $ kubectl exec -it {depl-name} bash
 $ node inspect server.js
 ```
+
+### Log
+Accessing the node log on the ExpressJS server can be done with,
+```
+$ kubectl exec -it {depl-name} bash
+$ tail -f /tmp/node.log
+```
+
+Ideally it should be implemented with [log4js](https://github.com/log4js-node/log4js-node).
+
+### Docker
+Building and deploying a docker image is done with,
+```
+$ ./deploy.sh
+```
+
+
 
 
