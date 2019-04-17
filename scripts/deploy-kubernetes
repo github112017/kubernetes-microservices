@@ -1,12 +1,32 @@
 #!/bin/bash
 
-# Deploy springboot-service
-echo "[log] deploying springboot-service to kubernetes..."
-sleep 2
-kubectl create -f services/springboot-service/application.yml
-sleep 4
+function deploy_node () {
+  read -p "[msg] do you want to deploy node-service (y/n)? " -n 1 -r
+  echo
 
-# Deploy node-service
-echo "[log] deploying node-service to kubernetes..."
-sleep 2
-kubectl create -f services/node-service/application.yml
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[deployer] deploying node-service to kubernetes..."
+    kubectl create -f services/node-service/application.yml
+    NODE_DEPL=$(kubectl get pods | grep "node-deployment-[a-zA-Z0-9_]*-[a-zA-Z0-9_]*" -o)
+    echo "[deployer] sasoria/node-service:latest has been deployed"
+  fi
+}
+
+function deploy_springboot () {
+  read -p "[msg] do you want to deploy springboot-service (y/n)? " -n 1 -r
+  echo
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "[deployer] deploying springboot-service to kubernetes..."
+    kubectl create -f services/springboot-service/application.yml
+    SPRINGBOOT_DEPL=$(kubectl get pods | grep "springboot-deployment-[a-zA-Z0-9_]*-[a-zA-Z0-9_]*" -o)
+    echo "[deployer] $SPRINGBOOT_DEPL has been deployed"
+  fi
+}
+
+function main () {
+  deploy_node
+  deploy_springboot
+}
+
+main
