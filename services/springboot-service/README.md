@@ -9,7 +9,7 @@ A Spring Boot Server that exposes the following endpoints,
 /api/clear_players
 ```
 
-It calls a REST API that return player statistics and currently saves the data in a `List`.
+It calls a REST API that return player statistics and currently saves the data in a `List`. The general structure of this project is taken from Skatteetaten's [openshift reference application](https://github.com/Skatteetaten/openshift-reference-springboot-server).
 
 ### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
