@@ -12,8 +12,8 @@ service/
 ```
 
 #### Todo
-- [ ] implement MongoDB-service
-- [ ] add groovy tests in Springboot-service
+- [ ] implement mongodb-service
+- [ ] add groovy tests in springboot-service
 - [ ] deploy with [Openshift](https://www.openshift.com/)
 - [ ] build with [Architect](https://github.com/Skatteetaten/architect)
 
