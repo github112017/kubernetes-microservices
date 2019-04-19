@@ -1,5 +1,5 @@
 ## Node-service (under development)
-An ExpressJS server that provides an AngularJS web client. It calls the api endpoints in a `springboot-service`, displaying it as a list in HTML. As such, it essentially works as a proxy server for the web client, making the `springboot-service` available.
+An ExpressJS server that provides an AngularJS web client. It calls the api endpoints in a `springboot-service`, displaying it as a list in HTML. As such, it essentially works as a proxy server, making the `springboot-service` available.
 The ExpressJS server exposes the following endopoints,
 
 ```
