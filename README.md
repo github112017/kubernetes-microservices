@@ -12,10 +12,10 @@ service/
 ```
 
 #### Todo
--[ ] implement MongoDB-service
--[ ] add groovy tests in Springboot-service
--[ ] deploy with [Openshift](https://www.openshift.com/)
--[ ] build with [Architect](https://github.com/Skatteetaten/architect)
+- [ ] implement MongoDB-service
+- [ ] add groovy tests in Springboot-service
+- [ ] deploy with [Openshift](https://www.openshift.com/)
+- [ ] build with [Architect](https://github.com/Skatteetaten/architect)
 
 ## Components
 ![Component diagram](/docs/Component_diagram.png)
