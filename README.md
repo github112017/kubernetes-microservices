@@ -1,5 +1,5 @@
 # kubernetes-microservices
-Microservices running in docker containers that interact on a Kubernetes platform. Services are listed in `services/` and a docker image will deploy to docker.io according to its respective Dockerfile. The service template is,
+Microservices running in docker containers that interact synchronously on a Kubernetes platform. Services are listed in `services/` and a docker image will deploy to docker.io according to its respective Dockerfile. The service template is,
 
 ```
 service/
@@ -17,6 +17,8 @@ service/
 - [ ] deploy with [Openshift](https://www.openshift.com/)
 - [ ] build with [Architect](https://github.com/Skatteetaten/architect)
 
+## Application architecture
+![Component diagram](/docs/Application_architecture.png)
 ## Components
 ![Component diagram](/docs/Component_diagram.png)
 ## Deployment
