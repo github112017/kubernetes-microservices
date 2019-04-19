@@ -27,12 +27,18 @@ public class LoadController {
     @ResponseStatus(HttpStatus.OK)
     public String loadData(Model model, @RequestParam(value="name", required=true) String name) throws
         ClientProtocolException, IOException {
+
+        if(!loadService.hasPlayer(name)) {
             if (loadService.loadPlayer(name)) {
-                return "Player loaded";
+                return "Player " + name +  " loaded";
             }
             else {
-                throw new RuntimeException("Failed to load data");
+                throw new RuntimeException("Failed to load player " + name);
             }
+        }
+        else {
+            throw new IllegalArgumentException("Player " + name + " already loaded");
+        }
     }
 
     @GetMapping({"/api/load_players"})
@@ -51,7 +57,7 @@ public class LoadController {
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getPlayer(Model model, @RequestParam(value="name", required=true) String name) throws
             ClientProtocolException, IOException {
-        if (loadService.loadPlayer(name)) {
+        if (loadService.hasPlayer(name)) {
             Map<String, Object> response = new HashMap<>();
             Player player = loadService.getPlayer(name);
 
@@ -63,7 +69,7 @@ public class LoadController {
             return response;
         }
         else {
-            throw new IllegalArgumentException("Failed to get data");
+            throw new IllegalArgumentException("Player " + name + "does not exist");
         }
     }
 
@@ -72,7 +78,6 @@ public class LoadController {
             ClientProtocolException, IOException {
         if (loadService.loadPlayer(name)) {
             List<Player> players = loadService.getPlayers();
-
             Map<Integer, Object> response = new HashMap<>();
 
             for (Player player : players) {

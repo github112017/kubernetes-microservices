@@ -21,7 +21,6 @@
     </properties>
 
     <dependencies>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,56 +30,60 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <!-- Spring Boot Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
-
-        <!-- Hibernate -->
+        <!-- Utils-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.3.6.Final</version>
         </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
-
-        <!-- Http client-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.3.2</version>
         </dependency>
-
-        <!-- Commons io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-
-        <!-- Json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20180813</version>
         </dependency>
+        <!-- Spring Boot test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.1.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.spockframework</groupId>
+          <artifactId>spock-core</artifactId>
+          <version>1.2-groovy-2.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.spockframework</groupId>
+          <artifactId>spock-spring</artifactId>
+          <version>1.2-groovy-2.4</version>
+          <scope>test</scope>
+        </dependency>
 
     </dependencies>
-
-    <!-- build -->
     <build>
+        <!-- It really should not be necessary to specify this, but it seems IntelliJ will not add it as as source folder
+             if we don't. -->
+        <testSourceDirectory>src/test/groovy</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -95,7 +98,6 @@
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
                 </configuration>
             </plugin>
-
             <!-- Config -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -116,6 +118,19 @@
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Groovy plugin -->
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compileTests</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
