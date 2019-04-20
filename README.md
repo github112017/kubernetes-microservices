@@ -18,7 +18,7 @@ service/
 - [ ] build with [Architect](https://github.com/Skatteetaten/architect)
 - [ ] install [Jenkins](https://jenkins.io/)
 
-## Application architecture
+## Proposed application architecture
 ![Component diagram](/docs/Application_architecture.png)
 ## Components
 ![Component diagram](/docs/Component_diagram.png)
