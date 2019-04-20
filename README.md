@@ -16,6 +16,7 @@ service/
 - [ ] add groovy tests to springboot-service
 - [ ] deploy with [Openshift](https://www.openshift.com/)
 - [ ] build with [Architect](https://github.com/Skatteetaten/architect)
+- [ ] install [Jenkins](https://jenkins.io/)
 
 ## Application architecture
 ![Component diagram](/docs/Application_architecture.png)
