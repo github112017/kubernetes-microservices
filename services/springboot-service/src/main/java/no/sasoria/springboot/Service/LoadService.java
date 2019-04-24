@@ -8,15 +8,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class LoadService {
@@ -25,7 +21,7 @@ public class LoadService {
     PlayerList playerlist;
 
     /**
-     * 
+     * Loads a player into a {@code List} if from a http get request if the request was successful.
      * @param name
      * @return
      * @throws IOException
@@ -42,7 +38,7 @@ public class LoadService {
     }
 
     /**
-     * 
+     * Gets a player with name {@code name}.
      * @param name
      * @return
      */
@@ -52,7 +48,7 @@ public class LoadService {
     }
 
     /**
-     * 
+     * Checks if list contains a player with name {@code name}.
      * @param name
      * @return
      */
@@ -61,15 +57,15 @@ public class LoadService {
     }
 
     /**
-     * 
-     * @return
+     * Gets player the player list.
+     * @return List of players
      */
     public List<Player> getPlayers(){
         return playerlist.getPlayers();
     }
 
     /**
-     * 
+     * Clears data in the player list.
      * @return
      * @throws Exception
      */
@@ -78,17 +74,16 @@ public class LoadService {
     }
 
     /**
-     * 
+     * Checks http status codes of a http request.
      * @param response
      * @param entity
      * @param name
-     * @return
+     * @return true if the status code is successful, i.e 200. false otherwise.
      * @throws IOException
      */
     private Boolean checkStatuscode(HttpResponse response, HttpEntity entity, String name) throws IOException {
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode == 200) {
-            // JSONObject jsonPlayer = extractPlayerFromResponse(entity);
             JSONObject jsonPlayer = JsonUtils.extractPlayerFromResponse(entity);
 
             playerlist.addPlayer(new Player(jsonPlayer));
@@ -119,9 +114,9 @@ public class LoadService {
     }
 
     /**
-     * 
+     * Creates an URL for a http REST request.
      * @param name
-     * @return
+     * @return url for playerinfo, platform: pc
      */
     private String createRequestURL(String name) {
         String baseUrl = "http://api.bf4stats.com/api/playerInfo?";
