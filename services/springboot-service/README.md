@@ -14,6 +14,7 @@ api/player
 HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
+  
   {
     "country": value,
     "game": value,
