@@ -85,7 +85,7 @@ class LoadControllerTest extends AbstractControllerTest {
                                 description("Player does not exist"),
                 )))
 
-        /* FIXME @Autowired loadService is null, resulting in a null pointer exception.
+        /* FIXME @Autowired loadService is null, resulting in a NullPointerException.
         when:
             // PUT
             shouldSucceed = false
