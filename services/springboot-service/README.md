@@ -1,6 +1,6 @@
 ## Springboot-service (under development)
 A Spring Boot Server that exposes the following endpoints,
-### PUT
+### PUT player
 ```
 // PUT
 api/player
@@ -12,7 +12,7 @@ Date: Mon, 29 Apr 2019 10:38:26 GMT
   "Player loaded"
   
 ```
-### GET
+### GET player
 ```
 // GET
 api/player
@@ -29,7 +29,33 @@ Date: Mon, 29 Apr 2019 10:38:26 GMT
   }
   
  ```
-### DELETE
+### GET players
+ ```
+//GET
+api/players
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 29 Apr 2019 19:32:30 GMT
+Transfer-Encoding: chunked
+
+{
+    "180744178": {
+        "country": "Norway",
+        "game": "bf4",
+        "id": 180744178,
+        "name": "player_01",
+        "rank": 140
+    },
+    "352434725": {
+        "country": "Republic of Ireland",
+        "game": "bf4",
+        "id": 352434725,
+        "name": "player_02",
+        "rank": 140
+    }
+}
+ ```
+### DELETE players
 ```
 // DELETE
 api/players
@@ -38,7 +64,7 @@ Content-Length: 12
 Content-Type: text/plain;charset=UTF-8
 Date: Mon, 29 Apr 2019 10:38:26 GMT
   
-  cleared data
+  cleared players
   
 ```
 
