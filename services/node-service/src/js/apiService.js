@@ -3,11 +3,11 @@ app.factory("apiService", function($http, $q) {
 
   return {
     load_player: function(name){
-      var api_load = '/api/load_player/'
+      var api_load = '/api/player/'
       console.log("sending $http.get to : " + base_url+api_load+name)
 
       return $http({
-        method: 'GET',
+        method: 'PUT',
         url: base_url + api_load + name,
         headers: {
           'Content-Type': 'text/plain'
@@ -16,7 +16,7 @@ app.factory("apiService", function($http, $q) {
     },
 
     get_player: function(name){
-      var api_get = '/api/get_player/'
+      var api_get = '/api/player/'
       console.log("sending $http.get to : " + base_url+api_get+name)
 
       return $http({
