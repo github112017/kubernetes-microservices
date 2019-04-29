@@ -3,19 +3,26 @@ app.controller("AppController", function($scope, $http, apiService) {
 
   apiService.load_player(player)
     .then(function(response) {
-    console.log("LOAD_SUCEESS : " + response)
+    console.log("loaded player : " + response)
   })
+
+  /* Wait for PUT to finish 
+  var now = new Date().getTime()
+  var millisecondsToWait = 4000
+  while(new Date().getTime() < now + millisecondsToWait) {
+    // wait
+  }*/
 
   apiService.get_player(player)
     .then(success, error)
     
   function success(response) {
-    console.log("SUCCESS : " + response)
+    var player = angular.fromJson(response.data.body)    
 
-    $scope.player = response.name
-    $scope.game = response.game
-    $scope.country = response.country
-    $scope.rank = response.rank
+    $scope.name = player.name
+    $scope.game = player.game
+    $scope.country = player.country
+    $scope.rank = player.rank
   }
   
   function error(error){
