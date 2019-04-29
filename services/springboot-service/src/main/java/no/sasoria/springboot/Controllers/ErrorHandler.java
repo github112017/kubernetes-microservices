@@ -2,6 +2,8 @@ package no.sasoria.springboot.Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpResponseException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,14 +18,21 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ RuntimeException.class })
     protected ResponseEntity<Object> handleGenericError(RuntimeException e, WebRequest request) {
-        System.out.println("IN RUNTIME EXP");
         return handleException(e, request, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler({ ClientProtocolException.class })
+    protected ResponseEntity<Object> handleProtocolError(RuntimeException e, WebRequest request) {
+        return handleException(e, request, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler({ HttpResponseException.class })
+    protected ResponseEntity<Object> handleHttpError(RuntimeException e, WebRequest request) {
+        return handleException(e, request, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler({ IllegalArgumentException.class })
     protected ResponseEntity<Object> handleBadRequest(IllegalArgumentException e, WebRequest request) {
-        System.out.println("IN ILLARG EXP : " + e);
-
         return handleException(e, request, HttpStatus.BAD_REQUEST);
     }
 
@@ -37,7 +46,6 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         if (e.getCause() != null) {
             error.put("cause", e.getCause().getMessage());
         }
-        System.out.println("IN HANDLE EXP : " + e);
 
         return handleExceptionInternal(e, error, headers, httpStatus, request);
     }
