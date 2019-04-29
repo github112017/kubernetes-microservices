@@ -31,7 +31,8 @@ Date: Mon, 29 Apr 2019 10:38:26 GMT
  ```
 ### DELETE
 ```
-// DELTE
+// DELETE
+api/players
 HTTP/1.1 200
 Content-Length: 12
 Content-Type: text/plain;charset=UTF-8
