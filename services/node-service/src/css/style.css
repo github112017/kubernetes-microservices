@@ -1,27 +1,24 @@
-/* Body */
 .body {
-	margin: 0;
+  margin: 0;
 }
 
-/* View container */
-.view-container {
-  margin: 0 auto;
-  height: 400px;
-  background-color: blue;
+.info {
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-family: "Raleway", sans-serif;
+  background-color: #F5F8F9;
+  color: rgb(11, 22, 63);
+  padding: 1%;
 }
 
-/* Navbar */
-.navbar-brand {
-	font-family: 'Raleway', sans-serif;
-	color: black;
+.navbar-header {
+  font-family: "Raleway", sans-serif;
+  color: color: rgb(11, 22, 63);
+  font-size: 20px; 
 }
 
-/* Header */
-.container h1 {
-	font-family: 'Raleway', sans-serif;
-}
-
-/* Paragraph */
-.container p {
-		font-family: 'Raleway', sans-serif;
+p {
+  color: #005FC9;
+  font-family: "Raleway", sans-serif;
 }
