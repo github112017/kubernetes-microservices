@@ -22,14 +22,14 @@ app.use(function(req, res, next) {
   next();
 })
 
-/* Load player, /api/load_player/{name} */
-app.get('/api/load_player/:name', (req, res) => {
+/* Load player, /api/player/{name} */
+app.put('/api/player/:name', (req, res) => {
 	var name = req.params.name
-	var url = 'http://springboot-app-service:8081/api/load_player?name=' + name
+	var url = 'http://springboot-app-service:8081/api/player?name='+name
   
   var load_req = {
     host: url,
-    method: 'GET',
+    method: 'PUT',
     headers: {
       'Content-Type': 'text/plain'
     }
@@ -53,9 +53,9 @@ app.get('/api/load_player/:name', (req, res) => {
 })
 
 /* Get player, /api/player/{name} */
-app.get('/api/get_player/:name', (req, res) => {
+app.get('/api/player/:name', (req, res) => {
   var name = req.params.name
-  var url = 'http://springboot-app-service:8081/api/get_player?name=' + name
+  var url = 'http://springboot-app-service:8081/api/player?name='+name
   
    var get_req = {
     host: url,
@@ -78,7 +78,33 @@ app.get('/api/get_player/:name', (req, res) => {
   }
 })
 
-/* Get player list, returns json - list of players */
+/* Get player, /api/player/{name} */
+app.delete('/api/players', (req, res) => {
+  // var name = req.params.name
+  var url = 'http://springboot-app-service:8081/api/players'
+  
+   var get_req = {
+    host: url,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  request(url, get_req, get_callback)
+
+  function get_callback (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(response)
+    }
+    else {
+      res.send(error)
+      console.error(error)
+      console.log(error)
+    }
+  }
+})
+
+/* Get player list, returns json - list of players 
 app.get('/api/get_players', (req, res) => {
 	var url = 'http://springboot-app-service:8081/api/get_players'
 
@@ -91,6 +117,7 @@ app.get('/api/get_players', (req, res) => {
 		}
 	})
 })
+*/
 
 app.listen(PORT, HOST)
 
