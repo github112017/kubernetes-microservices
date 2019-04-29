@@ -5,7 +5,10 @@ import no.sasoria.springboot.Models.PlayerList;
 import no.sasoria.springboot.Utils.JsonUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
@@ -90,23 +93,22 @@ public class LoadService {
             return true;
         }
         else if (statusCode == 404) {
-            /*
-                TODO : handle,
-                    notFound : 404
+            /* TODO check correct apache.client.error
+                notFound : 404
             */
             String error = JsonUtils.extractErrorFromResponse(entity);
-            return false;
+            // FIXME : this handles as a 500 internal server error
+            throw new HttpResponseException(404, "Player not found, error: " + error);
         }
         else if (statusCode == 500) {
-            /*
-                TODO : handle,
-                    nameInvalid  : 500
-                    nameLong     : 500
-                    nameShort    : 500
-                    notPublic    : ?
+            /* TODO check correct apache.client.error
+                nameInvalid  : 500
+                nameLong     : 500
+                nameShort    : 500
+                notPublic    : ?
             */
             String error = JsonUtils.extractErrorFromResponse(entity);
-            return false;
+            throw new ClientProtocolException(error);
         }
         else {
             return false;
