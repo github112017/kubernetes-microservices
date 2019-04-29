@@ -1,7 +1,6 @@
 package no.sasoria.springboot.Controllers;
 
 import no.sasoria.springboot.Models.Player;
-import no.sasoria.springboot.Models.PlayerList;
 import no.sasoria.springboot.Service.LoadService;
 import org.apache.http.client.ClientProtocolException;
 
@@ -145,7 +144,7 @@ public class LoadController {
     @DeleteMapping({"/api/players"})
     public String clearData() throws Exception {
         // TODO : test this with httpie.
-        if (loadService.clearData())
+        if (loadService.clearPlayers())
             return "cleared data";
 
         throw new RuntimeException("Failed to clear players");

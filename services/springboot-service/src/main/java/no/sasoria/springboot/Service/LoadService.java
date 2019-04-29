@@ -69,7 +69,7 @@ public class LoadService {
      * @return
      * @throws Exception
      */
-    public boolean clearData() throws Exception {
+    public boolean clearPlayers() throws Exception {
         return playerlist.clear();
     }
 
