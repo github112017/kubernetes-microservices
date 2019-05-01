@@ -3,8 +3,8 @@ An ExpressJS server that provides an AngularJS web client. It calls the api endp
 
 The ExpressJS server exposes the following endopoints,
 
+### PUT
 ```
-//PUT
 /api/player/:name
 HTTP/1.1 200 OK
 Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
@@ -19,7 +19,9 @@ X-Powered-By: Express
 
 Player loaded
 
-//GET
+```
+### GET
+```
 /api/player/:name
 HTTP/1.1 200 OK
 Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
@@ -62,8 +64,9 @@ X-Powered-By: Express
     },
     "statusCode": 200
 }
-
-//GET
+```
+### GET
+```
 /api/players
 HTTP/1.1 200 OK
 Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
@@ -106,8 +109,9 @@ X-Powered-By: Express
     },
     "statusCode": 200
 }
-
-// DELETE
+```
+## DELETE
+```
 /api/players
 HTTP/1.1 200 OK
 Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
