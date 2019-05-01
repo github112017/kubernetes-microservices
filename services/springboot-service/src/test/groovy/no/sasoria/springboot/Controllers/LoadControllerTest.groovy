@@ -1,5 +1,8 @@
 package no.sasoria.springboot.Controllers
 
+import no.sasoria.springboot.Service.LoadService
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.web.WebAppConfiguration
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE
@@ -17,6 +20,7 @@ import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.test.web.servlet.ResultActions
 import org.springframework.web.client.RestTemplate
 
+@AutoConfigureMockMvc
 @WebAppConfiguration
 @SpringBootTest(classes = RestTemplate, webEnvironment = NONE)
 class LoadControllerTest extends AbstractControllerTest {
@@ -48,6 +52,7 @@ class LoadControllerTest extends AbstractControllerTest {
                             )))
 
         /* FIXME @Autowired loadService is null, resulting in a NullPointerException.
+           FIXME : added @AutoConfigureMockMvc, try it.
         when:
             shouldSucceed = false
             result = mockMvc.perform(RestDocumentationRequestBuilders.put(url))
@@ -86,6 +91,8 @@ class LoadControllerTest extends AbstractControllerTest {
                 )))
 
         /* FIXME @Autowired loadService is null, resulting in a NullPointerException.
+           FIXME : added @AutoConfigureMockMvc, try it.
+
         when:
             // PUT
             shouldSucceed = false
