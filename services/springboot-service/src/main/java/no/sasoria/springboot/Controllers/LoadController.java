@@ -43,9 +43,8 @@ public class LoadController {
     @ResponseStatus(HttpStatus.OK)
     public String loadPlayer(Model model, @RequestParam(value="name") String name) throws IOException {
         if(!hasPlayer(name)) {
-            throw new HttpResponseException(404, "Player not found, error: ");
-            //loadService.loadPlayer(name);
-           // return "Player loaded";
+            loadService.loadPlayer(name);
+            return "Player loaded";
         }
         throw new IllegalArgumentException("Player already loaded");
     }
