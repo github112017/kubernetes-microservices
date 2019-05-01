@@ -27,27 +27,23 @@ app.put('/api/player/:name', (req, res) => {
 	var name = req.params.name
 	var url = 'http://springboot-app-service:8081/api/player?name='+name
   
-  var load_req = {
+  var req = {
     host: url,
     method: 'PUT',
     headers: {
       'Content-Type': 'text/plain'
     }
   }
-  console.error("Before loading")
 
-  request(url, load_req, load_callback) 
+  request(url, req, callback) 
 
-  console.error("After loading")
-
-  function load_callback(error, response, body) {
+  function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send("Player loaded")
     }
     else {
-      res.send(error)
-      console.log(error)
       console.error(error)
+      next(error)
     }
   }
 })
@@ -57,67 +53,97 @@ app.get('/api/player/:name', (req, res) => {
   var name = req.params.name
   var url = 'http://springboot-app-service:8081/api/player?name='+name
   
-   var get_req = {
+   var req = {
     host: url,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
   }
-  request(url, get_req, get_callback)
+  request(url, req, callback)
 
-  function get_callback (error, response, body) {
+  function callback (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(response)
     }
     else {
-      res.send(error)
       console.error(error)
-      console.log(error)
+      next(error)
     }
   }
 })
 
-/* Get player, /api/player/{name} */
+/* Delete players, /api/players */
 app.delete('/api/players', (req, res) => {
-  // var name = req.params.name
   var url = 'http://springboot-app-service:8081/api/players'
   
-   var get_req = {
+   var req = {
     host: url,
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
   }
-  request(url, get_req, get_callback)
+  request(url, req, callback)
 
-  function get_callback (error, response, body) {
+  function callback (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(response)
     }
     else {
-      res.send(error)
       console.error(error)
-      console.log(error)
+      next(error)
     }
   }
 })
 
-/* Get player list, returns json - list of players 
-app.get('/api/get_players', (req, res) => {
-	var url = 'http://springboot-app-service:8081/api/get_players'
+/* GET player list */
+app.get('/api/players', (req, res) => {
+	var url = 'http://springboot-app-service:8081/api/players'
 
-	request(url, function (error, response, body) {
-		if (response.statusCode === 200) {
-			res.json(response)
-		} 
-		else if (error) {
-			console.log(error)
-		}
-	})
+	var req = {
+    host: url,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  request(url, req, callback)
+
+  function callback (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(response)
+    }
+    else {
+      console.error(error)
+      next(error)
+    }
+  }
 })
-*/
+
+/* DELETE player list */
+app.delete('/api/players', (req, res) => {
+  var url = 'http://springboot-app-service:8081/api/players'
+
+  var req = {
+    host: url,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'text/plain'
+    }
+  }
+  request(url, req, callback)
+
+  function callback (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(response)
+    }
+    else {
+      console.error(error)
+      next(error)
+    }
+  }
+})
 
 app.listen(PORT, HOST)
 
