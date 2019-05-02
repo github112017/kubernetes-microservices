@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Install script for FINN.no's fiaas-deploy-daemon
+
+git clone https://github.com/fiaas/fiaas-deploy-daemon
+
+sudo pip install -r requirements.txt
+
+echo "run with, 
+	$ minikube start
+	$ bin/run_fdd_against_minikub"
