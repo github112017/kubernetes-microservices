@@ -18,6 +18,8 @@ service/
 - [ ] build with [Architect](https://github.com/Skatteetaten/architect)
 - [ ] install [Jenkins](https://jenkins.io/)
 
+[02.06.2019] I'm currently considering deploying with FINN.no's [fiaas-deploy-daemon](https://github.com/fiaas/fiaas-deploy-daemon). Sadly it gives me a LivenessCheck error when I deploy applications to Kubernetes.
+
 ## Proposed application architecture
 ![Component diagram](/docs/Application_architecture.png)
 ## Components
