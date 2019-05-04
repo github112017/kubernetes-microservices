@@ -4,8 +4,12 @@
 
 git clone https://github.com/Skatteetaten/architect.git
 
-# Setup GO
-# TODO implement this
+if [ !$(type -P go) ]; then
+    echo "please install go and set up $PATH varaiables
+    export GOROOT=...
+    export GOPATH=...
+    export PATH=$GOROOT/bin:$PATH"
+fi
 
 echo "run with,
-	$ bin/amd_64/architect build -f test.json -v "
+	$ ./bin/amd64/architect build -f test.json -v "
