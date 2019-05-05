@@ -156,7 +156,7 @@ X-Powered-By: Express
     "statusCode": 200
 }
 ```
-### Request layout (outdated, TODO : create a new layout)
+### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
 
 ### Debug
