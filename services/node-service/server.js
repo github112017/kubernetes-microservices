@@ -42,8 +42,8 @@ app.put('/api/player/:name', (req, res) => {
       res.send("Player loaded")
     }
     else {
+      console.log(error)
       console.error(error)
-      next(error)
     }
   }
 })
@@ -67,8 +67,8 @@ app.get('/api/player/:name', (req, res) => {
       res.json(response)
     }
     else {
+      console.log(error)
       console.error(error)
-      next(error)
     }
   }
 })
@@ -91,8 +91,8 @@ app.delete('/api/players', (req, res) => {
       res.json(response)
     }
     else {
+      console.log(error)
       console.error(error)
-      next(error)
     }
   }
 })
@@ -115,8 +115,8 @@ app.get('/api/players', (req, res) => {
       res.json(response)
     }
     else {
+      console.log(error)
       console.error(error)
-      next(error)
     }
   }
 })
@@ -139,8 +139,8 @@ app.delete('/api/players', (req, res) => {
       res.json(response)
     }
     else {
+      console.log(error)
       console.error(error)
-      next(error)
     }
   }
 })
