@@ -1,6 +1,2 @@
 #!/bin/bash
-
-# minikube ip
-# /etc/hosts
-# ip minikube
-# └─────╼ http minikube:30003/api/load
+# TODO: add $(minikube ip) to /etc/hosts if MacOS
