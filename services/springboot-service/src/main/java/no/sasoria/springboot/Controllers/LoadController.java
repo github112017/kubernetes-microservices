@@ -24,10 +24,12 @@ public class LoadController {
 
     private RestTemplate restTemplate;
 
-    public LoadController(RestTemplate restTemplate) {
+    public LoadController(RestTemplate restTemplate, LoadService loadService) {
+        this.loadService = loadService;
         this.restTemplate = restTemplate;
     }
 
+    // TODO : check if this is needed for injecting mock in test .
     protected LoadService getLoadService() {
         return loadService;
     }
@@ -40,11 +42,13 @@ public class LoadController {
      * @throws IOException
      */
     @PutMapping({"/api/player"})
-    @ResponseStatus(HttpStatus.OK)
-    public String loadPlayer(Model model, @RequestParam(value="name") String name) throws IOException {
+    //@ResponseStatus(HttpStatus.OK)
+    public Map<String, Object> loadPlayer(Model model, @RequestParam(value="name") String name) throws IOException {
         if(!hasPlayer(name)) {
             loadService.loadPlayer(name);
-            return "Player loaded";
+            Map<String, Object> response = new HashMap<>();
+            response.put("result", "Player loaded");
+            return response;
         }
         throw new IllegalArgumentException("Player already loaded");
     }
@@ -60,7 +64,7 @@ public class LoadController {
      * @return json representation of a player
      */
     @GetMapping({"/api/player"})
-    @ResponseStatus(HttpStatus.OK)
+    // @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getPlayer(Model model, @RequestParam(value="name") String name) {
         if (hasPlayer(name)) {
             Map<String, Object> response = new HashMap<>();
@@ -127,10 +131,12 @@ public class LoadController {
      * @throws Exception
      */
     @DeleteMapping({"/api/players"})
-    public String clearData() throws Exception {
-        // TODO : test this with httpie.
-        if (loadService.clearPlayers())
-            return "cleared players";
+    public Map<String, Object> clearData() throws Exception {
+        if (loadService.clearPlayers()) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("result", "Cleared Players");
+            return response;
+        }
 
         throw new RuntimeException("Failed to clear players");
     }
