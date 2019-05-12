@@ -7,12 +7,8 @@ import spock.lang.Specification
 class PlayerListTest extends Specification {
 
     def loadService = new LoadService()
-    def player
-
 
     def "Test for loading player with service" () {
-        given:
-            player = new Player(0, "John", "bf4", "Norway", 34)
 
         when:
             loadService.loadPlayer("John")
@@ -23,6 +19,7 @@ class PlayerListTest extends Specification {
     }
 
     def "Test for getting player with service" () {
+
         when:
             loadService.loadPlayer("John")
 
@@ -31,6 +28,7 @@ class PlayerListTest extends Specification {
     }
 
     def "Test for having player with service" () {
+
         when:
             loadService.loadPlayer("John")
 
@@ -39,6 +37,7 @@ class PlayerListTest extends Specification {
     }
 
     def "Test for clearing players with service" () {
+
         when:
             loadService.clearPlayers()
 
