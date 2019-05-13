@@ -1,6 +1,5 @@
 package no.sasoria.springboot.Service
 
-import no.sasoria.springboot.Models.Player
 import spock.lang.Specification
 
 
