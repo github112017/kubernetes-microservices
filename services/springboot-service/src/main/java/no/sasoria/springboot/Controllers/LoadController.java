@@ -29,11 +29,6 @@ public class LoadController {
         this.restTemplate = restTemplate;
     }
 
-    // TODO : check if this is needed for injecting mock in test .
-    protected LoadService getLoadService() {
-        return loadService;
-    }
-
     /**
      * Loads player with {@code name} using the REST API from bf4stats.com and adds it to a {@code List}.
      * @param model
@@ -42,7 +37,6 @@ public class LoadController {
      * @throws IOException
      */
     @PutMapping({"/api/player"})
-    //@ResponseStatus(HttpStatus.OK)
     public Map<String, Object> loadPlayer(Model model, @RequestParam(value="name") String name) throws IOException {
         if(!hasPlayer(name)) {
             loadService.loadPlayer(name);
@@ -64,7 +58,6 @@ public class LoadController {
      * @return json representation of a player
      */
     @GetMapping({"/api/player"})
-    // @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getPlayer(Model model, @RequestParam(value="name") String name) {
         if (hasPlayer(name)) {
             Map<String, Object> response = new HashMap<>();
