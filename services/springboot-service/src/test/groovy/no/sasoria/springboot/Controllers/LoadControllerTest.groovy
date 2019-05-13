@@ -1,8 +1,6 @@
 package no.sasoria.springboot.Controllers
 
 import no.sasoria.springboot.Service.LoadService
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.web.WebAppConfiguration
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE
@@ -20,10 +18,13 @@ import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.test.web.servlet.ResultActions
 import org.springframework.web.client.RestTemplate
 
-@AutoConfigureMockMvc
+
 @WebAppConfiguration
-@SpringBootTest(classes = RestTemplate, webEnvironment = NONE)
+@SpringBootTest(classes = [LoadService, RestTemplate], webEnvironment = NONE)
 class LoadControllerTest extends AbstractControllerTest {
+
+    @Autowired
+    LoadService loadService
 
     @Autowired
     RestTemplate restTemplate
@@ -33,7 +34,7 @@ class LoadControllerTest extends AbstractControllerTest {
     Boolean shouldSucceed
 
     // PUT
-    def "Test for documenting the player put endpoint"() {
+    def "Test for documenting the player PUT endpoint"() {
         given:
             def url = '/api/player?name=John'
 
@@ -51,8 +52,6 @@ class LoadControllerTest extends AbstractControllerTest {
                                             description("Player already loaded"),
                             )))
 
-        /* FIXME @Autowired loadService is null, resulting in a NullPointerException.
-           FIXME : added @AutoConfigureMockMvc, try it.
         when:
             shouldSucceed = false
             result = mockMvc.perform(RestDocumentationRequestBuilders.put(url))
@@ -63,14 +62,14 @@ class LoadControllerTest extends AbstractControllerTest {
                 document("player-put",
                     preprocessResponse(prettyPrint()),
                     responseFields(
-                            fieldWithPath("errorMessage").type(JsonFieldType.STRING).
+                            fieldWithPath("result").type().
                                     description("Player loaded"),
                     )))
-        */
+
 }
 
     // GET
-    def "Test for documenting the player get endpoint"() {
+    def "Test for documenting the player GET endpoint"() {
 
         given:
             def url = '/api/player?name=John'
@@ -89,9 +88,6 @@ class LoadControllerTest extends AbstractControllerTest {
                             fieldWithPath("errorMessage").type(JsonFieldType.STRING).
                                 description("Player does not exist"),
                 )))
-
-        /* FIXME @Autowired loadService is null, resulting in a NullPointerException.
-           FIXME : added @AutoConfigureMockMvc, try it.
 
         when:
             // PUT
@@ -112,16 +108,25 @@ class LoadControllerTest extends AbstractControllerTest {
                         preprocessResponse(prettyPrint()),
                         responseFields(
                             fieldWithPath("game").type(JsonFieldType.STRING).
-                            description("bf4"),
-                )))
-        */
+                                description("bf4"),
 
+                                fieldWithPath("name").type(JsonFieldType.STRING).
+                                description("John"),
+
+                                fieldWithPath("rank").type(JsonFieldType.NUMBER).
+                                        description("0"),
+
+                                fieldWithPath("country").type(JsonFieldType.STRING).
+                                        description("null"),
+
+
+                        )))
     }
 
     @Override
     protected List<Object> getControllersUnderTest() {
 
-        controller = new LoadController(restTemplate) {
+        controller = new LoadController(restTemplate, loadService) {
             @Override
             protected boolean hasPlayer(String name) {
                 return shouldSucceed
