@@ -3,7 +3,7 @@ package no.sasoria.springboot.Service
 import spock.lang.Specification
 
 
-class PlayerListTest extends Specification {
+class LoadServiceTest extends Specification {
 
     def loadService = new LoadService()
 
@@ -38,10 +38,11 @@ class PlayerListTest extends Specification {
     def "Test for clearing players with service" () {
 
         when:
+            loadService.loadPlayer("John")
             loadService.clearPlayers()
 
         then:
-            loadService.hasPlayer("John")
+            loadService.getPlayers().size == 0
     }
 
 }
