@@ -11,7 +11,6 @@ import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
@@ -19,8 +18,7 @@ import java.util.List;
 @Service
 public class LoadService {
 
-    @Autowired
-    PlayerList playerlist;
+    PlayerList playerlist = new PlayerList();
 
     /**
      * Loads a player into a {@code List} if from a http get request if the request was successful.
