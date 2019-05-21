@@ -40,18 +40,12 @@ function main () {
 
 main
 
-# this workds with sudo
-# echo '1.2.3.4 test' | sudo tee -a /etc/hosts
-
 #IP=$(minikube ip)
 #HOSTNAME="minikube"
-
-#echo "minikube is running on $IP"
 
 # Add host to /etc/hosts
 #if [ -n "$(grep $HOSTNAME /etc/hosts)" ]; then
 #	echo "removing host..."
-#fi
-
 #echo "adding host $HOSTNAME to /etc/hosts"
 #echo "$IP $HOSTNAME" >> /etc/hosts
+#fi
