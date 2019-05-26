@@ -1,5 +1,6 @@
 ## Springboot-service (under development)
-A Spring Boot Server that exposes the following endpoints,
+A Spring Boot Server that calls a REST API returning player statistics and currently saves the data in a `List`. The general structure of this project is taken from Skatteetaten's [openshift reference application](https://github.com/Skatteetaten/openshift-reference-springboot-server).
+It exposes the following endpoints,
 ### PUT player
 ```
 // PUT
@@ -67,8 +68,6 @@ Date: Mon, 29 Apr 2019 10:38:26 GMT
   cleared players
   
 ```
-
-It calls a REST API that return player statistics and currently saves the data in a `List`. The general structure of this project is taken from Skatteetaten's [openshift reference application](https://github.com/Skatteetaten/openshift-reference-springboot-server).
 
 ### Request layout
 ![Activity diagram](docs/Activity_diagram.png)
